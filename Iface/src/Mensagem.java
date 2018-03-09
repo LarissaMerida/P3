@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -6,23 +7,25 @@ public class Mensagem
 {
 	private String mensagem;
 	private String remetente;
-	private Conta destinatario;
-	
+	private String destinatario;
+
+
 	public void setRemetente(String nome)
 	{
 		this.remetente = nome;
 	}
-	public void setMensagem(ArrayList<String> amigos)
+	public void setMensagem(ArrayList<Conta> amigos)
 	{
-	   System.out.println("Destinatario: ");
-	   this.destinatario.setNome();
-	   
 	   Scanner input = new Scanner(System.in);
-		
+
+	   System.out.println("Digite o nome do amigo:");
+       this.destinatario = input.nextLine();
+
 		System.out.println("Digite a mensagem :");
 		this.mensagem = input.nextLine();
+		System.out.println("Mensagem enviada.");
 	}
-	
+
 	public String getMensagem()
 	{
 		return this.mensagem;
@@ -31,11 +34,11 @@ public class Mensagem
 	{
 		return this.remetente;
 	}
-	public Conta getDestinatario()
+	public String getDestinatario()
 	{
 		return this.destinatario;
 	}
-	
+
 	public void printMensagem(ArrayList<Mensagem> mensagens)
 	{
 		for(Mensagem i: mensagens)
@@ -43,7 +46,11 @@ public class Mensagem
 			System.out.println(" ");
 			System.out.println("Mensagem: " +i.getMensagem());
 			System.out.println("Remetente: " + i.getRemetente());
-			System.out.println("Destinatario: " + i.getDestinatario().getNome());
+			System.out.println("Destinatario: " + i.getDestinatario());
+		}
+		if(mensagens.size() == 0)
+		{
+			System.out.println("Sem mensagens.");
 		}
 	}
 }
