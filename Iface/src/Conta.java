@@ -129,10 +129,14 @@ public class Conta
 	{
 		return this.amigo;
 	}
-	public Mensagem getMensagem(ArrayList<Conta> amigos, Conta conta)
+	public Mensagem setMensagem(ArrayList<Conta> amigos, Conta conta)
 	{
 		this.mensagem.setRemetente(conta.getNome());
 		this.mensagem.setMensagem(amigos);
+		return this.mensagem;
+	}
+	public Mensagem getMensagem()
+	{
 		return this.mensagem;
 	}
 

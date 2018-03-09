@@ -9,6 +9,7 @@ public class Main
 	private static ArrayList<Mensagem> mensagens = new ArrayList<Mensagem>();
 	private static ArrayList<Conta> contas = new ArrayList<Conta>();
 	private static ArrayList<String> membros = new ArrayList<String>();
+	private static ArrayList<Conta> solicitacoes = new ArrayList<Conta>();
 
 	public static void main(String[] args)
 	{
@@ -40,12 +41,14 @@ public class Main
 				{
 					System.out.println("Digite 1 para editar atributos ");
 					System.out.println("Digite 2 para adicionar amigos ");
-					System.out.println("Digite 3 para enviar mensagem ");
-					System.out.println("Digite 4 para criar comunidade ");
-					System.out.println("Digite 5 para se tornar membro ");
-					System.out.println("Digite 6 para recuperar informações ");
-					System.out.println("Digite 7 para desativar a conta ");
-					System.out.println("Digite 8 para  sair da conta");
+					System.out.println("Digite 3 para aceitar amigos ");
+					System.out.println("Digite 4 para enviar mensagem ");
+					System.out.println("Digite 5 para ver a caixa de mensagem");
+					System.out.println("Digite 6 para criar comunidade ");
+					System.out.println("Digite 7 para se tornar membro ");
+					System.out.println("Digite 8 para recuperar informações ");
+					System.out.println("Digite 9 para desativar a conta ");
+					System.out.println("Digite 10 para  sair da conta");
 					escolha = input.nextInt();
 
 					switch(escolha)
@@ -56,24 +59,30 @@ public class Main
 							break;
 						case 2:
 							input.nextLine();
-							usuario.getPerfil().setAmigos(contas, amigos, usuario);
+							usuario.getPerfil().setAmigos(contas, amigos, usuario, solicitacoes);
 							break;
 						case 3:
-							mensagens.add(usuario.getMensagem(amigos, usuario));
+							usuario.getAmigo().convite(solicitacoes, amigos);
 							break;
 						case 4:
-							usuario.getComunidade().criarComunidade(usuario, membros);
+							mensagens.add(usuario.setMensagem(amigos, usuario));
 							break;
 						case 5:
-							usuario.getComunidade().addMembros(usuario, membros);
+							usuario.getMensagem().printMensagem(mensagens);
 							break;
 						case 6:
-							usuario.backup(amigos , contas, membros);
+							usuario.getComunidade().criarComunidade(usuario, membros);
 							break;
 						case 7:
-							usuario.remove(contas, amigos, mensagens, membros);
+							usuario.getComunidade().addMembros(usuario, membros);
 							break;
 						case 8:
+							usuario.backup(amigos , contas, membros);
+							break;
+						case 9:
+							usuario.remove(contas, amigos, mensagens, membros);
+							break;
+						case 10:
 							System.out.println("Conta fechada com sucesso.");
 							escolha = 0;
 							break;

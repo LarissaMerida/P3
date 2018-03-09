@@ -92,7 +92,7 @@ public class Perfil
 			System.out.println("Concluido.");
 	}
 
-	public void setAmigos(ArrayList<Conta> contas, ArrayList<Conta> amigos, Conta conta1)
+	public void setAmigos(ArrayList<Conta> contas, ArrayList<Conta> amigos, Conta conta1, ArrayList<Conta> solicitacoes)
 	{
 		Scanner input = new Scanner(System.in);
 
@@ -106,8 +106,9 @@ public class Perfil
 		{
 			boolean resposta = false;
 			conta1.getAmigo().enviarConvite();
-			
+			solicitacoes.add(conta1);
 			resposta = conta1.getAmigo().getConvite();
+			
 			System.out.println("Aguardando resposta....");
 			if(resposta == true)
 			{
